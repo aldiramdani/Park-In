@@ -25,6 +25,15 @@ public class CategoryAdapter extends FragmentPagerAdapter{
     }
 
     @Override
+    public CharSequence getPageTitle(int position) {
+        if (position == 0) {
+            return "BERANDA";
+        } else {
+            return  "RIWAYAT";
+        }
+    }
+
+    @Override
     public int getCount() {
         return 2;
     }

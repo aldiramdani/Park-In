@@ -1,5 +1,6 @@
 package com.d3ifcool.park_in;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setElevation(0);
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
-
+        TabLayout tab = findViewById(R.id.tab);
         CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
-
         viewPager.setAdapter(adapter);
+        tab.setupWithViewPager(viewPager);
     }
 
     @Override

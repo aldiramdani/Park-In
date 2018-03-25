@@ -51,24 +51,24 @@ public class ParkAdapter extends ArrayAdapter<Park> {
         }
 
 
-        ImageButton btn_bagi = (ImageButton)listParkView.findViewById(R.id.btn_bagi);
-        ImageButton btn_hapus = (ImageButton)listParkView.findViewById(R.id.btn_hapus);
-        ImageButton btn_edit = (ImageButton)listParkView.findViewById(R.id.btn_edit);
-        btn_bagi.setOnClickListener(new View.OnClickListener() {
+        TextView textView_bagi = (TextView) listParkView.findViewById(R.id.textview_bagi);
+        TextView textView_hapus = (TextView) listParkView.findViewById(R.id.textview_hapus);
+        TextView textView_edit = (TextView)listParkView.findViewById(R.id.textview_edit);
+        textView_bagi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Coba Bagi",Toast.LENGTH_SHORT).show();
             }
         });
 
-        btn_edit.setOnClickListener(new View.OnClickListener() {
+        textView_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Coba Edit",Toast.LENGTH_SHORT).show();
             }
         });
 
-        btn_hapus.setOnClickListener(new View.OnClickListener() {
+        textView_hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Coba Hapus",Toast.LENGTH_SHORT).show();

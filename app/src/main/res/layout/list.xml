@@ -1,126 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:andoird="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="5dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/image_beranda"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/ic_launcher_background" />
+        android:orientation="vertical"
+        >
 
         <LinearLayout
-            android:id="@+id/text_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/text_judul"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:paddingLeft="16dp"
-                android:text="Parkiran FIT"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text_keterangan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingTop="14dp"
-                android:text="Diantara motor Honda dan Yamaha"
-                android:textColor="#8a000000"
-                android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/image_beranda"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/ic_launcher_background" />
 
             <LinearLayout
+                android:id="@+id/text_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:id="@+id/text_tanggal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
-                    android:text="17/08/2017" />
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/text_jam"
+                    android:id="@+id/text_judul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/raleway_bold"
                     android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
-                    android:text="13:44PM" />
+                    android:text="Parkiran FIT"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/text_keterangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="14dp"
+                    android:text="Diantara motor Honda dan Yamaha"
+                    android:textColor="#8a000000"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/text_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="43dp"
+                        android:text="17/08/2017" />
+
+                    <TextView
+                        android:id="@+id/text_jam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="43dp"
+                        android:text="13:44PM" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:paddingTop="15dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <ImageButton
-        android:id="@+id/btn_bagi"
-        android:background="@null"
-        android:src="@drawable/ic_share_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:paddingTop="5dp"
-        android:paddingLeft="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#8a000000"
-        android:text="Bagikan"
-        />
 
-        <ImageButton
-            android:paddingLeft="32dp"
-            android:id="@+id/btn_hapus"
-            android:background="@null"
-            android:src="@drawable/ic_delete_black_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:paddingTop="5dp"
-            android:paddingLeft="8dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#8a000000"
-            android:text="Hapus"
-            />
-        <ImageButton
-            android:paddingLeft="32dp"
-            android:id="@+id/btn_edit"
-            android:background="@null"
-            android:src="@drawable/ic_edit_black_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:paddingTop="5dp"
-            android:paddingLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#8a000000"
-            android:text="Ubah"
-            />
-    </LinearLayout>
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
+
+            <TextView
+                android:id="@+id/textview_bagi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:text="Bagikan"
+                android:paddingRight="32dp"
+                android:textColor="#8a000000"
+                android:drawableLeft="@drawable/ic_share_black_24dp"
+                android:drawablePadding="8dp"/>
+
+            <TextView
+                android:id="@+id/textview_hapus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:text="Hapus"
+                android:paddingRight="32dp"
+                android:textColor="#8a000000"
+                android:drawableLeft="@drawable/ic_delete_black_24dp"
+                android:drawablePadding="8dp"/>
+
+            <TextView
+                android:id="@+id/textview_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:text="Ubah"
+                android:textColor="#8a000000"
+                android:drawableLeft="@drawable/ic_edit_black_24dp"
+                android:drawablePadding="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

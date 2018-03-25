@@ -1,96 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:andoird="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/r_image_beranda"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/ic_launcher_background" />
-
+        android:layout_margin="20dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="5dp">
         <LinearLayout
-            android:id="@+id/text_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/r_text_judul"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:paddingLeft="16dp"
-                android:text="ParkiranT"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/r_text_keterangan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingTop="14dp"
-                android:text="Diantara motor Honda dan Yamaha"
-                android:textColor="#8a000000"
-                android:textSize="14sp" />
+            android:orientation="vertical"
+            >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/image_beranda"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_launcher_background" />
 
-                <TextView
-                    android:id="@+id/r_text_tanggal"
+                <LinearLayout
+                    android:id="@+id/text_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
-                    android:text="17/08/2017" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_judul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingLeft="16dp"
+                        android:text="Parkiran FIT"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_keterangan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="14dp"
+                        android:text="Diantara motor Honda dan Yamaha"
+                        android:textColor="#8a000000"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/text_tanggal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="43dp"
+                            android:text="17/08/2017" />
+
+                        <TextView
+                            android:id="@+id/text_jam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="43dp"
+                            android:text="13:44PM" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
 
                 <TextView
-                    android:id="@+id/r_text_jam"
+                    android:id="@+id/textview_bagi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
-                    android:text="13:44PM" />
-
+                    android:paddingLeft="8dp"
+                    android:paddingTop="5dp"
+                    android:text="Bagikan"
+                    android:paddingRight="32dp"
+                    android:textColor="#8a000000"
+                    android:drawableLeft="@drawable/ic_share_black_24dp"
+                    android:drawablePadding="8dp"/>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:paddingTop="15dp"
-        android:gravity="left"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/r_btn_bagi"
-            android:background="@null"
-            android:src="@drawable/ic_share_black_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:paddingTop="5dp"
-            android:paddingLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#8a000000"
-            android:text="Bagikan"
-            />
-
-    </LinearLayout>
-
+    </android.support.v7.widget.CardView>
 </LinearLayout>

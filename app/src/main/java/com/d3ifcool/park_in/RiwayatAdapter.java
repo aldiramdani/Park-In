@@ -46,12 +46,9 @@ public class RiwayatAdapter extends ArrayAdapter<Park> {
     }
 
 
-    ImageButton btn_bagi = (ImageButton)listParkView.findViewById(R.id.btn_bagi);
-    ImageButton btn_hapus = (ImageButton)listParkView.findViewById(R.id.btn_hapus);
-    ImageButton btn_edit = (ImageButton)listParkView.findViewById(R.id.btn_edit);
+        TextView textView_bagi = (TextView) listParkView.findViewById(R.id.textview_bagi);
 
-
-        btn_bagi.setOnClickListener(new View.OnClickListener() {
+        textView_bagi.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Toast.makeText(getContext(),"Coba Bagi",Toast.LENGTH_SHORT).show();
