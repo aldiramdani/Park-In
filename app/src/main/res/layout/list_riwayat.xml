@@ -8,62 +8,63 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <ImageView
+            android:id="@+id/r_image_beranda"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:src="@drawable/ic_launcher_background"
-            android:id="@+id/r_image_beranda"
-            />
+            android:src="@drawable/ic_launcher_background" />
+
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/text_container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:paddingLeft="16dp"
                 android:id="@+id/r_text_judul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="16dp"
+                android:text="ParkiranT"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:text="ParkiranT" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/r_text_keterangan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#8a000000"
                 android:paddingLeft="16dp"
                 android:paddingTop="14dp"
                 android:text="Diantara motor Honda dan Yamaha"
-                />
+                android:textColor="#8a000000"
+                android:textSize="14sp" />
+
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
                 <TextView
                     android:id="@+id/r_text_tanggal"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="43dp"
                     android:text="17/08/2017" />
 
                 <TextView
                     android:id="@+id/r_text_jam"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="43dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="43dp"
                     android:text="13:44PM" />
 
             </LinearLayout>
