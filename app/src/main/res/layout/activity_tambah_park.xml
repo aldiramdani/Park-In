@@ -73,18 +73,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="23dp"
+                android:layout_marginBottom="10dp"
                 android:text="Foto Tempat"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <ImageButton
-                android:id="@+id/fotoButton"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image"
                 android:layout_gravity="center"
-                android:layout_marginBottom="43dp"
-                android:src="@drawable/icon_add_photos" />
+                android:id="@+id/test"
+                />
 
         </LinearLayout>
     </ScrollView>

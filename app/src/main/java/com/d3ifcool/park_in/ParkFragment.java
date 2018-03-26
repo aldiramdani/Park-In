@@ -41,14 +41,17 @@ public class ParkFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),tambahPark.class);
-                startActivity(intent);
-
+                ChangeActivity();
             }
         });
         return rootView;
     }
 
+
+    public void ChangeActivity(){
+        Intent i = new Intent(getContext(),tambahPark.class);
+        startActivity(i);
+    }
     @Override
     public void onStop() {
         super.onStop();
