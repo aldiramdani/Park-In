@@ -40,8 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="@font/raleway_bold"
                 android:text="Deskripsi Tempat"
                 android:textColor="#000000"
+                android:textStyle="bold"
                 android:textSize="14sp" />
 
 
@@ -52,6 +54,7 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="Nama Tempat"
                     android:textColor="#616161"
                     android:textSize="14sp" />
@@ -65,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="43dp"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="Keterangan Tempat"
                     android:textColor="#616161"
                     android:textSize="14sp" />
@@ -74,7 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_bold"
                 android:text="Foto Tempat"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
