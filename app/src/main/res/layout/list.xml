@@ -26,6 +26,8 @@
                 android:id="@+id/image_beranda"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_launcher_background" />
 
             <LinearLayout
@@ -39,7 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/raleway_bold"
-                    android:paddingLeft="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="11dp"
                     android:text="Parkiran FIT"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -48,8 +51,9 @@
                     android:id="@+id/text_keterangan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="14dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="14dp"
                     android:text="Diantara motor Honda dan Yamaha"
                     android:textColor="#8a000000"
                     android:textSize="14sp" />
@@ -97,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="5dp"
+                android:fontFamily="@font/raleway_medium"
                 android:text="Bagikan"
                 android:paddingRight="32dp"
                 android:textColor="#8a000000"
@@ -108,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
+                android:fontFamily="@font/raleway_medium"
                 android:paddingTop="5dp"
                 android:text="Hapus"
                 android:paddingRight="32dp"
@@ -121,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="5dp"
+                android:fontFamily="@font/raleway_medium"
                 android:text="Ubah"
                 android:textColor="#8a000000"
                 android:drawableLeft="@drawable/ic_edit_black_24dp"
