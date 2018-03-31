@@ -19,7 +19,9 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class ParkFragment extends Fragment {
-
+    ListView listView;
+    ArrayList<Park> list;
+    ParkAdapter adapter=null;
     private ArrayList<Park> parks = new ArrayList<>();
 
     public ParkFragment() {
@@ -30,12 +32,12 @@ public class ParkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
-
-        parks.add(new Park("Test","Tes2","19/20/2013","19:00",R.drawable.ic_launcher_background));
-
-        ParkAdapter parkAdapter = new ParkAdapter(getContext(),parks);
-        ListView listView = (ListView)rootView.findViewById(R.id.list_view);
-        listView.setAdapter(parkAdapter);
+//
+//        parks.add(new Park("Test","Tes2","19/20/2013","19:00",R.drawable.ic_launcher_background));
+//
+//        ParkAdapter parkAdapter = new ParkAdapter(getContext(),parks);
+//        ListView listView = (ListView)rootView.findViewById(R.id.list_view);
+//        listView.setAdapter(parkAdapter);
 
         FloatingActionButton fab = rootView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -12,10 +12,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static SQLiteHelper sqLiteHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sqLiteHelper = new SQLiteHelper(this, "ParkDB.sqlite", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS PARKIR (ID INTEGER PRIMARY KEY AUTOINCREMENT, namaTempat VARCHAR, keterangan VARCHAR, tanggal VARCHAR, jam VARCHAR, gambar BLOB)");
         getSupportActionBar().setElevation(0);
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
+
+
     }
 
     @Override

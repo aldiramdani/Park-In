@@ -38,12 +38,7 @@ public class RiwayatAdapter extends ArrayAdapter<Park> {
 
     //ambilfoto
     ImageView image_beranda =(ImageView)listParkView.findViewById(R.id.image_beranda);
-        if (currentPark.hasImage()){
-        image_beranda.setImageResource(currentPark.getmImage());
-        image_beranda.setVisibility(View.VISIBLE);
-    }else{
-        image_beranda.setVisibility(View.GONE);
-    }
+
 
 
         TextView textView_bagi = (TextView) listParkView.findViewById(R.id.textview_bagi);

@@ -9,10 +9,9 @@ public class Park {
     private  String mKeterangan;
     private String mTanggal;
     private  String mJam;
-    private int mImage = NO_IMAGE_PROVIDED;
-    private static final int NO_IMAGE_PROVIDED = -1;
+    private byte[] mImage;
 
-    public Park(String mJudul, String mKeterangan, String mTanggal, String mJam,int mImage) {
+    public Park(String mJudul, String mKeterangan, String mTanggal, String mJam,byte[] mImage) {
         this.mJudul = mJudul;
         this.mKeterangan = mKeterangan;
         this.mTanggal = mTanggal;
@@ -52,14 +51,12 @@ public class Park {
         this.mJam = mJam;
     }
 
-    public int getmImage() {
+    public byte[] getmImage() {
         return mImage;
     }
 
-    public void setmImage(int mImage) {
+    public void setmImage(byte[] mImage) {
         this.mImage = mImage;
     }
-    public boolean hasImage (){
-        return mImage != NO_IMAGE_PROVIDED;
-    }
+
 }

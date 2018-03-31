@@ -1,6 +1,8 @@
 package com.d3ifcool.park_in;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,19 +25,26 @@ import java.util.ArrayList;
  */
 
 public class ParkAdapter extends ArrayAdapter<Park> {
+    private Context context;
+    private  int layout;
+    private ArrayList<Park> ParkList;
 
     public ParkAdapter (Context context, ArrayList<Park> parks){
         super(context,0,parks);
     }
 
+    private class ViewHolder{
+        ImageView image_beranda;
+        TextView    textJudul,textKeterangan,textTanggal,textJam;
+    }
     @NonNull
     @Override
     public View getView(int position, View convertView,  ViewGroup parent) {
         View listParkView = convertView;
-
+        ViewHolder holder = new ViewHolder();
         if (listParkView == null){
-            listParkView = LayoutInflater.from(getContext()).inflate
-                    (R.layout.list,parent, false);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         }
 
         //ambilobjek
@@ -43,12 +52,7 @@ public class ParkAdapter extends ArrayAdapter<Park> {
 
         //ambilfoto
         ImageView image_beranda =(ImageView)listParkView.findViewById(R.id.image_beranda);
-        if (currentPark.hasImage()){
-            image_beranda.setImageResource(currentPark.getmImage());
-            image_beranda.setVisibility(View.VISIBLE);
-        }else{
-            image_beranda.setVisibility(View.GONE);
-        }
+
 
 
         TextView textView_bagi = (TextView) listParkView.findViewById(R.id.textview_bagi);
@@ -86,6 +90,10 @@ public class ParkAdapter extends ArrayAdapter<Park> {
 
         TextView textJam = (TextView)listParkView.findViewById(R.id.text_jam);
         textJam.setText(currentPark.getmJam());
+
+        byte[] parkirImage = currentPark.getmImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(parkirImage,0,parkirImage.length);
+
         return listParkView;
     }
 }
