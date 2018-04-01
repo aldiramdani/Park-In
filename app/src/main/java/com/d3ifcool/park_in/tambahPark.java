@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.realm.Realm;
+
 
 public class tambahPark extends AppCompatActivity {
 //    public static SQLiteHelper sqLiteHelper;
@@ -64,10 +66,10 @@ public class tambahPark extends AppCompatActivity {
             }
         });
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                try{
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
 //                    sqLiteHelper.insertData(
 //                          txt_nama_tempat.getText().toString().trim(),
 //                            txt_ket_tempat.getText().toString().trim(),
@@ -76,27 +78,37 @@ public class tambahPark extends AppCompatActivity {
 //                            ImageViewToByte(imageTempat)
 //
 //                    );
-//
-//                    Toast.makeText(getApplicationContext(),"Berhasil Di Tambah",Toast.LENGTH_LONG);
-//                    txt_nama_tempat.setText("");
-//                    txt_ket_tempat.setText("");
-//                    imageTempat.setImageResource(R.drawable.image);
-//                }
-//                catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Park p = realm.createObject(Park.class);
+                    p.setmJudul(txt_nama_tempat.getText().toString().trim());
+                    p.setmKeterangan(txt_ket_tempat.getText().toString().trim());
+                    p.setmTanggal(formattedDate);
+                    p.setmJam(String.valueOf(currentHours));
+                    p.setmImage(ImageViewToByte(imageTempat));
+                    realm.commitTransaction();
+
+                    Toast.makeText(getApplicationContext(),"Berhasil Di Tambah",Toast.LENGTH_LONG);
+                    txt_nama_tempat.setText("");
+                    txt_ket_tempat.setText("");
+                    imageTempat.setImageResource(R.drawable.image);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
 
     }
 
-//    public static byte[] ImageViewToByte(ImageButton image){
-//      Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-//      byte[] bytesArray = stream.toByteArray();
-//      return bytesArray;
-//    }
+    public static byte[] ImageViewToByte(ImageButton image){
+      Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+      byte[] bytesArray = stream.toByteArray();
+      return bytesArray;
+    }
 }

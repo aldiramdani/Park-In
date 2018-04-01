@@ -43,8 +43,7 @@ public class ParkAdapter extends ArrayAdapter<Park> {
         View listParkView = convertView;
         ViewHolder holder = new ViewHolder();
         if (listParkView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+            listParkView = LayoutInflater.from(getContext()).inflate(R.layout.list, parent, false);
         }
 
         //ambilobjek
@@ -82,7 +81,7 @@ public class ParkAdapter extends ArrayAdapter<Park> {
         TextView textJudul = (TextView)listParkView.findViewById(R.id.text_judul);
         textJudul.setText(currentPark.getmJudul());
 
-        TextView textKeterangan = (TextView)listParkView.findViewById(R.id.text_jam);
+        TextView textKeterangan = (TextView)listParkView.findViewById(R.id.text_keterangan);
         textKeterangan.setText(currentPark.getmKeterangan());
 
         TextView textTanggal = (TextView)listParkView.findViewById(R.id.text_tanggal);
@@ -92,7 +91,10 @@ public class ParkAdapter extends ArrayAdapter<Park> {
         textJam.setText(currentPark.getmJam());
 
         byte[] parkirImage = currentPark.getmImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(parkirImage,0,parkirImage.length);
+        if (parkirImage != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(parkirImage,0,parkirImage.length);
+            image_beranda.setImageBitmap(bitmap);
+        }
 
         return listParkView;
     }

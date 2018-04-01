@@ -1,10 +1,12 @@
 package com.d3ifcool.park_in;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Aldir on 3/24/2018.
  */
 
-public class Park {
+public class Park extends RealmObject {
     private String mJudul;;
     private  String mKeterangan;
     private String mTanggal;
@@ -18,6 +20,8 @@ public class Park {
         this.mJam = mJam;
         this.mImage = mImage;
     }
+
+    public Park(){} // Wajib ada kalo pake realm
 
     public String getmJudul() {
         return mJudul;

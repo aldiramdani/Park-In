@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -22,7 +25,6 @@ public class ParkFragment extends Fragment {
     ListView listView;
     ArrayList<Park> list;
     ParkAdapter adapter=null;
-    private ArrayList<Park> parks = new ArrayList<>();
 
     public ParkFragment() {
         // Required empty public constructor
@@ -32,12 +34,14 @@ public class ParkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
-//
-//        parks.add(new Park("Test","Tes2","19/20/2013","19:00",R.drawable.ic_launcher_background));
-//
-//        ParkAdapter parkAdapter = new ParkAdapter(getContext(),parks);
-//        ListView listView = (ListView)rootView.findViewById(R.id.list_view);
-//        listView.setAdapter(parkAdapter);
+
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Park> parks = realm.where(Park.class).findAll();
+        ArrayList<Park> parkArray = new ArrayList<>(parks); // Convert ke arraylist biar sesuai sama adapternya karna saya males update adapternya ke realm result
+
+        ParkAdapter parkAdapter = new ParkAdapter(getContext(),parkArray);
+        ListView listView = (ListView)rootView.findViewById(R.id.list_view);
+        listView.setAdapter(parkAdapter);
 
         FloatingActionButton fab = rootView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
