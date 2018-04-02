@@ -14,10 +14,6 @@ import java.util.ArrayList;
  */
 
 public class BerandaActivity extends AppCompatActivity {
-
-
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);

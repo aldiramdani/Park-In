@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,34 +21,30 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import io.realm.OrderedRealmCollection;
+import io.realm.Realm;
+import io.realm.RealmBaseAdapter;
+
 /**
  * Created by Aldir on 3/25/2018.
  */
 
-public class ParkAdapter extends ArrayAdapter<Park> {
-    private Context context;
-    private  int layout;
-    private ArrayList<Park> ParkList;
+public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
 
-    public ParkAdapter (Context context, ArrayList<Park> parks){
-        super(context,0,parks);
+    public ParkAdapter (OrderedRealmCollection<Park> realmResults){
+        super(realmResults);
     }
 
-    private class ViewHolder{
-        ImageView image_beranda;
-        TextView    textJudul,textKeterangan,textTanggal,textJam;
-    }
     @NonNull
     @Override
-    public View getView(int position, View convertView,  ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         View listParkView = convertView;
-        ViewHolder holder = new ViewHolder();
         if (listParkView == null){
-            listParkView = LayoutInflater.from(getContext()).inflate(R.layout.list, parent, false);
+            listParkView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
         }
 
         //ambilobjek
-        Park currentPark = getItem(position);
+        final Park currentPark = adapterData.get(position);
 
         //ambilfoto
         ImageView image_beranda =(ImageView)listParkView.findViewById(R.id.image_beranda);
@@ -60,21 +57,24 @@ public class ParkAdapter extends ArrayAdapter<Park> {
         textView_bagi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Coba Bagi",Toast.LENGTH_SHORT).show();
+                Toast.makeText(parent.getContext(),"Coba Bagi",Toast.LENGTH_SHORT).show();
             }
         });
 
         textView_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Coba Edit",Toast.LENGTH_SHORT).show();
+                Toast.makeText(parent.getContext(),"Coba Edit",Toast.LENGTH_SHORT).show();
             }
         });
 
         textView_hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Coba Hapus",Toast.LENGTH_SHORT).show();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                currentPark.setRiwayat(true);
+                realm.commitTransaction();
             }
         });
         //ambiltext

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,10 +37,9 @@ public class ParkFragment extends Fragment {
        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
 
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<Park> parks = realm.where(Park.class).findAll();
-        ArrayList<Park> parkArray = new ArrayList<>(parks); // Convert ke arraylist biar sesuai sama adapternya karna saya males update adapternya ke realm result
-
-        ParkAdapter parkAdapter = new ParkAdapter(getContext(),parkArray);
+        RealmResults<Park> parks = realm.where(Park.class).sort("mTanggal", Sort.ASCENDING)
+                .equalTo("isRiwayat", false).findAll();
+        ParkAdapter parkAdapter = new ParkAdapter(parks);
         ListView listView = (ListView)rootView.findViewById(R.id.list_view);
         listView.setAdapter(parkAdapter);
 
@@ -50,9 +50,9 @@ public class ParkFragment extends Fragment {
                 ChangeActivity();
             }
         });
+
         return rootView;
     }
-
 
     public void ChangeActivity(){
         Intent i = new Intent(getContext(),tambahPark.class);

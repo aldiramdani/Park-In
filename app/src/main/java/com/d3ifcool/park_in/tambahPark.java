@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 import io.realm.Realm;
 
@@ -51,7 +52,7 @@ public class tambahPark extends AppCompatActivity {
         button = (Button)findViewById(R.id.button);
         txt_nama_tempat = (TextInputEditText)findViewById(R.id.txt_nama_tempat);
         txt_ket_tempat = (TextInputEditText)findViewById(R.id.txt_ket_tempat);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
         formattedDate = dateFormat.format(c);
         Calendar rightnow = Calendar.getInstance();
         currentHours = rightnow.get(Calendar.HOUR_OF_DAY);
@@ -81,15 +82,16 @@ public class tambahPark extends AppCompatActivity {
 
                     Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
-                    Park p = realm.createObject(Park.class);
+                    Park p = realm.createObject(Park.class, UUID.randomUUID().toString());
                     p.setmJudul(txt_nama_tempat.getText().toString().trim());
                     p.setmKeterangan(txt_ket_tempat.getText().toString().trim());
                     p.setmTanggal(formattedDate);
                     p.setmJam(String.valueOf(currentHours));
                     p.setmImage(ImageViewToByte(imageTempat));
+                    p.setRiwayat(false);
                     realm.commitTransaction();
 
-                    Toast.makeText(getApplicationContext(),"Berhasil Di Tambah",Toast.LENGTH_LONG);
+                    Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();
                     txt_nama_tempat.setText("");
                     txt_ket_tempat.setText("");
                     imageTempat.setImageResource(R.drawable.image);

@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
-
-
     }
 
     @Override

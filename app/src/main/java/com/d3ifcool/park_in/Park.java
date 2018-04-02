@@ -1,19 +1,40 @@
 package com.d3ifcool.park_in;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Aldir on 3/24/2018.
  */
 
 public class Park extends RealmObject {
+    @PrimaryKey
+    private String id;
     private String mJudul;;
     private  String mKeterangan;
     private String mTanggal;
     private  String mJam;
     private byte[] mImage;
 
-    public Park(String mJudul, String mKeterangan, String mTanggal, String mJam,byte[] mImage) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private boolean isRiwayat;
+
+    public boolean isRiwayat() {
+        return isRiwayat;
+    }
+
+    public void setRiwayat(boolean riwayat) {
+        isRiwayat = riwayat;
+    }
+
+    public Park(String mJudul, String mKeterangan, String mTanggal, String mJam, byte[] mImage) {
         this.mJudul = mJudul;
         this.mKeterangan = mKeterangan;
         this.mTanggal = mTanggal;
