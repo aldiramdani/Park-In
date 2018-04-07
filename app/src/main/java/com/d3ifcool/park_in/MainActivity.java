@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sqLiteHelper = new SQLiteHelper(this, "ParkDB.sqlite", null, 1);
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS PARKIR (ID INTEGER PRIMARY KEY AUTOINCREMENT, namaTempat VARCHAR, keterangan VARCHAR, tanggal VARCHAR, jam VARCHAR, gambar BLOB)");
+
         getSupportActionBar().setElevation(0);
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);

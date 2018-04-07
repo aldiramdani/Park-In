@@ -1,8 +1,8 @@
 package com.d3ifcool.park_in;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
@@ -10,12 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,9 +21,7 @@ import java.util.UUID;
 
 import io.realm.Realm;
 
-
-public class tambahPark extends AppCompatActivity {
-//    public static SQLiteHelper sqLiteHelper;
+public class Edit extends AppCompatActivity {
     ImageButton imageTempat;
     Button button;
 
@@ -42,12 +37,18 @@ public class tambahPark extends AppCompatActivity {
         imageTempat.setImageBitmap(bitmap);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_park);
-//        sqLiteHelper = new SQLiteHelper(this, "ParkDB.sqlite", null, 1);
-//        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS PARKIR (ID INTEGER PRIMARY KEY AUTOINCREMENT, namaTempat VARCHAR, keterangan VARCHAR, tanggal VARCHAR, jam VARCHAR, gambar BLOB)");
+        setContentView(R.layout.activity_edit);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        String id = getIntent().getExtras().getString("id");
+        final Realm realm = Realm.getDefaultInstance();
+        final Park park = realm.where(Park.class).equalTo("id", id).findFirst();
+
         imageTempat = (ImageButton)findViewById(R.id.image_tempat);
         button = (Button)findViewById(R.id.button);
         txt_nama_tempat = (TextInputEditText)findViewById(R.id.txt_nama_tempat);
@@ -57,7 +58,10 @@ public class tambahPark extends AppCompatActivity {
         Calendar rightnow = Calendar.getInstance();
         currentHours = rightnow.get(Calendar.HOUR_OF_DAY);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        txt_nama_tempat.setText(park.getmJudul());
+        txt_ket_tempat.setText(park.getmKeterangan());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(park.getmImage(),0,park.getmImage().length);
+        imageTempat.setImageBitmap(bitmap);
 
         imageTempat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,22 +76,17 @@ public class tambahPark extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     //Realm Begin
-                    Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
-                    Park p = realm.createObject(Park.class, UUID.randomUUID().toString());
                     //relam atur data
-                    p.setmJudul(txt_nama_tempat.getText().toString().trim());
-                    p.setmKeterangan(txt_ket_tempat.getText().toString().trim());
-                    p.setmTanggal(formattedDate);
-                    p.setmJam(String.valueOf(currentHours));
-                    p.setmImage(ImageViewToByte(imageTempat));
-                    p.setRiwayat(false);
+                    park.setmJudul(txt_nama_tempat.getText().toString().trim());
+                    park.setmKeterangan(txt_ket_tempat.getText().toString().trim());
+                    park.setmTanggal(formattedDate);
+                    park.setmJam(String.valueOf(currentHours));
+                    park.setmImage(ImageViewToByte(imageTempat));
+                    park.setRiwayat(false);
                     realm.commitTransaction();
 
-                    Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();
-                    txt_nama_tempat.setText("");
-                    txt_ket_tempat.setText("");
-                    imageTempat.setImageResource(R.drawable.image);
+                    Toast.makeText(Edit.this,"Berhasil Di Edit",Toast.LENGTH_LONG).show();
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -97,10 +96,10 @@ public class tambahPark extends AppCompatActivity {
     }
 
     public static byte[] ImageViewToByte(ImageButton image){
-      Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-      byte[] bytesArray = stream.toByteArray();
-      return bytesArray;
+        byte[] bytesArray = stream.toByteArray();
+        return bytesArray;
     }
 }

@@ -29,13 +29,13 @@ public class RiwayatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_control,container,false);
 
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Park> parks = realm.where(Park.class).sort("mTanggal", Sort.DESCENDING)
                 .equalTo("isRiwayat", true).findAll();
-        ParkAdapter parkAdapter = new ParkAdapter(parks);
-        ListView listView = (ListView)rootView.findViewById(R.id.list_view);
+        RiwayatAdapter parkAdapter = new RiwayatAdapter(parks);
+        ListView listView = (ListView)rootView.findViewById(R.id.list_view_park);
         listView.setAdapter(parkAdapter);
 
         return rootView;

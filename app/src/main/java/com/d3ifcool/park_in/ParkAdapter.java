@@ -1,6 +1,7 @@
 package com.d3ifcool.park_in;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -57,14 +58,20 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
         textView_bagi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(parent.getContext(),"Coba Bagi",Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Saya parkir di " + currentPark.getmJudul() + " "+ currentPark.getmKeterangan());
+                sendIntent.setType("text/plain");
+                parent.getContext().startActivity(sendIntent);
             }
         });
 
         textView_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(parent.getContext(),"Coba Edit",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(parent.getContext(), Edit.class);
+                intent.putExtra("id", currentPark.getId());
+                parent.getContext().startActivity(intent);
             }
         });
 
