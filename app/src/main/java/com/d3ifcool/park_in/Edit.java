@@ -74,22 +74,26 @@ public class Edit extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    //Realm Begin
-                    realm.beginTransaction();
-                    //relam atur data
-                    park.setmJudul(txt_nama_tempat.getText().toString().trim());
-                    park.setmKeterangan(txt_ket_tempat.getText().toString().trim());
-                    park.setmTanggal(formattedDate);
-                    park.setmJam(String.valueOf(currentHours));
-                    park.setmImage(ImageViewToByte(imageTempat));
-                    park.setRiwayat(false);
-                    realm.commitTransaction();
+                if (txt_nama_tempat.getText().toString().equals("") || txt_ket_tempat.getText().toString().equals("")){
+                    Toast.makeText(Edit.this,"Nama Tempat dan Keterangan Tempat Harus Di Isi !",Toast.LENGTH_LONG).show();
+                }else {
+                    try {
+                        //Realm Begin
+                        realm.beginTransaction();
+                        //relam atur data
+                        park.setmJudul(txt_nama_tempat.getText().toString().trim());
+                        park.setmKeterangan(txt_ket_tempat.getText().toString().trim());
+                        park.setmTanggal(formattedDate);
+                        park.setmJam(String.valueOf(currentHours));
+                        park.setmImage(ImageViewToByte(imageTempat));
+                        park.setRiwayat(false);
+                        realm.commitTransaction();
 
-                    Toast.makeText(Edit.this,"Berhasil Di Edit",Toast.LENGTH_LONG).show();
-                }
-                catch (Exception e){
-                    e.printStackTrace();
+                        Toast.makeText(Edit.this, "Berhasil Di Edit", Toast.LENGTH_LONG).show();
+                        finish();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });

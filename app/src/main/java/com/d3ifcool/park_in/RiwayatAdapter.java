@@ -1,6 +1,8 @@
 package com.d3ifcool.park_in;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,7 +36,7 @@ public class RiwayatAdapter extends RealmBaseAdapter<Park> implements ListAdapte
     @NonNull
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        View listParkView = convertView;
+          View listParkView = convertView;
         if (listParkView == null){
             listParkView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_riwayat, parent, false);
         }
@@ -55,13 +57,24 @@ public class RiwayatAdapter extends RealmBaseAdapter<Park> implements ListAdapte
         });
 
         TextView textView_delete = (TextView) listParkView.findViewById(R.id.textview_del);
+        final View ListParkView = listParkView;
         textView_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                currentPark.deleteFromRealm();
-                realm.commitTransaction();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListParkView.getRootView().getContext());
+                builder.setMessage("Yakin Akan Dihapus?")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Realm realm = Realm.getDefaultInstance();
+                                realm.beginTransaction();
+                                currentPark.deleteFromRealm();
+                                realm.commitTransaction();
+                            }
+                        })
+                        .setNegativeButton("Batal",null);
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 

@@ -6,11 +6,6 @@
     >
 
     <item
-        android:id="@+id/btn_bantuan"
-        android:title="Bantuan"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/btn_pengembang"
         android:title="Pengembang"
         app:showAsAction="never"/>

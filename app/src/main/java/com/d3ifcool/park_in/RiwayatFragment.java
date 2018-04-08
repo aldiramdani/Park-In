@@ -29,7 +29,7 @@ public class RiwayatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_control,container,false);
+         View rootView = inflater.inflate(R.layout.fragment_control,container,false);
 
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Park> parks = realm.where(Park.class).sort("mTanggal", Sort.DESCENDING)

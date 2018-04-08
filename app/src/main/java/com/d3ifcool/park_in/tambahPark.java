@@ -31,9 +31,10 @@ public class tambahPark extends AppCompatActivity {
     Button button;
 
     TextInputEditText txt_nama_tempat,txt_ket_tempat;
-    String formattedDate,hours;
+    String formattedDate;
     Date c = Calendar.getInstance().getTime();
-    int currentHours;
+    Date jam = Calendar.getInstance().getTime();
+    String currentHours;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -52,10 +53,12 @@ public class tambahPark extends AppCompatActivity {
         button = (Button)findViewById(R.id.button);
         txt_nama_tempat = (TextInputEditText)findViewById(R.id.txt_nama_tempat);
         txt_ket_tempat = (TextInputEditText)findViewById(R.id.txt_ket_tempat);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyy");
         formattedDate = dateFormat.format(c);
         Calendar rightnow = Calendar.getInstance();
-        currentHours = rightnow.get(Calendar.HOUR_OF_DAY);
+
+        SimpleDateFormat hours = new SimpleDateFormat("hh:mm");
+        currentHours = hours.format(jam);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -70,30 +73,38 @@ public class tambahPark extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    //Realm Begin
-                    Realm realm = Realm.getDefaultInstance();
-                    realm.beginTransaction();
-                    Park p = realm.createObject(Park.class, UUID.randomUUID().toString());
-                    //relam atur data
-                    p.setmJudul(txt_nama_tempat.getText().toString().trim());
-                    p.setmKeterangan(txt_ket_tempat.getText().toString().trim());
-                    p.setmTanggal(formattedDate);
-                    p.setmJam(String.valueOf(currentHours));
-                    p.setmImage(ImageViewToByte(imageTempat));
-                    p.setRiwayat(false);
-                    realm.commitTransaction();
+               if (txt_nama_tempat.getText().equals("") || txt_ket_tempat.getText().toString().equals("")){
+                   Toast.makeText(tambahPark.this,"Nama Tempat Atau Keterangan Tempat Harus Di Isi !",Toast.LENGTH_SHORT).show();
+               }else{
+                   try{
+                       //Realm Begin
+                       Realm realm = Realm.getDefaultInstance();
+                       realm.beginTransaction();
+                       Park p = realm.createObject(Park.class, UUID.randomUUID().toString());
+                       //relam atur data
+                       p.setmJudul(txt_nama_tempat.getText().toString().trim());
+                       p.setmKeterangan(txt_ket_tempat.getText().toString().trim());
+                       p.setmTanggal(formattedDate);
+                      p.setmJam(currentHours);
+                       p.setmImage(ImageViewToByte(imageTempat));
+                       p.setRiwayat(false);
+                       realm.commitTransaction();
 
-                    Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();
-                    txt_nama_tempat.setText("");
-                    txt_ket_tempat.setText("");
-                    imageTempat.setImageResource(R.drawable.image);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+                       Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();
+                       txt_nama_tempat.setText("");
+                       txt_ket_tempat.setText("");
+                       imageTempat.setImageResource(R.drawable.image);
+                       finish();
+                       pindah();
+                   }   catch (Exception e){
+                       e.printStackTrace();
+                   }
+               }
+
             }
         });
+
+
     }
 
     public static byte[] ImageViewToByte(ImageButton image){
@@ -103,4 +114,10 @@ public class tambahPark extends AppCompatActivity {
       byte[] bytesArray = stream.toByteArray();
       return bytesArray;
     }
+
+    public void pindah(){
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+    }
+
 }

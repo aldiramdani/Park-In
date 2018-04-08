@@ -1,6 +1,8 @@
 package com.d3ifcool.park_in;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -31,21 +33,23 @@ import io.realm.RealmBaseAdapter;
  */
 
 public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
-
     public ParkAdapter (OrderedRealmCollection<Park> realmResults){
         super(realmResults);
     }
+    Context mContext;
+//    View v;
+
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(int position, final View convertView, final ViewGroup parent) {
         View listParkView = convertView;
         if (listParkView == null){
             listParkView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
         }
-
-        //ambilobjek
         final Park currentPark = adapterData.get(position);
+        //ambilobjek
+
 
         //ambilfoto
         ImageView image_beranda =(ImageView)listParkView.findViewById(R.id.image_beranda);
@@ -75,13 +79,25 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
             }
         });
 
+        final View ListParkView = listParkView;
         textView_hapus.setOnClickListener(new View.OnClickListener() {
-            @Override
+           @Override
             public void onClick(View view) {
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                currentPark.setRiwayat(true);
-                realm.commitTransaction();
+
+               AlertDialog.Builder builder = new AlertDialog.Builder(ListParkView.getRootView().getContext());
+               builder.setMessage("Yakin Selesai?")
+                       .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+                               Realm realm = Realm.getDefaultInstance();
+                               realm.beginTransaction();
+                               currentPark.setRiwayat(true);
+                               realm.commitTransaction();
+                           }
+                       })
+                       .setNegativeButton("Batal",null);
+               AlertDialog alert = builder.create();
+               alert.show();
             }
         });
         //ambiltext
@@ -105,4 +121,8 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
 
         return listParkView;
     }
+    public void coba(){
+
+    }
+
 }

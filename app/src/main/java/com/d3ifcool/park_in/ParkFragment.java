@@ -35,9 +35,8 @@ public class ParkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
-
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<Park> parks = realm.where(Park.class).sort("mTanggal", Sort.ASCENDING)
+        RealmResults<Park> parks = realm.where(Park.class).sort("mJam", Sort.DESCENDING)
                 .equalTo("isRiwayat", false).findAll();
         ParkAdapter parkAdapter = new ParkAdapter(parks);
         ListView listView = (ListView)rootView.findViewById(R.id.list_view);
@@ -50,6 +49,7 @@ public class ParkFragment extends Fragment {
                 ChangeActivity();
             }
         });
+
 
         return rootView;
     }
