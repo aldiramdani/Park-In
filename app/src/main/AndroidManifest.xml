@@ -34,11 +34,17 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".PengembangActivity" android:label="Pengembang">
-                <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity"
-                    />
+        <activity
+            android:name=".PengembangActivity"
+            android:label="Pengembang">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".DevActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PengembangActivity"/>
         </activity>
     </application>
 

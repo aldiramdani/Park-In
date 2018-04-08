@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Pengembang"
         android:textColor="#000"
+        android:id="@+id/pengembang"
         android:paddingBottom="16dp"
         />
 </LinearLayout>
