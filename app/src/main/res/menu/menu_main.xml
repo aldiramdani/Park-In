@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/btn_pengembang"
-        android:title="Pengembang"
+        android:title="Tentang"
         app:showAsAction="never"/>
 
 </menu>

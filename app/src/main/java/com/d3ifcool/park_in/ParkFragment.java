@@ -40,6 +40,8 @@ public class ParkFragment extends Fragment {
                 .equalTo("isRiwayat", false).findAll();
         ParkAdapter parkAdapter = new ParkAdapter(parks);
         ListView listView = (ListView)rootView.findViewById(R.id.list_view);
+        View emptyViewPark = rootView.findViewById(R.id.empty_view_beranda);
+        listView.setEmptyView(emptyViewPark);
         listView.setAdapter(parkAdapter);
 
         FloatingActionButton fab = rootView.findViewById(R.id.fab);
