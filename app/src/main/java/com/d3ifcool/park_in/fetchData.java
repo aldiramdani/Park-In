@@ -27,7 +27,7 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            URL url = new URL("https://api.myjson.com/bins/15wscn");
+            URL url = new URL("https://api.myjson.com/bins/yvvev");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -40,7 +40,8 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             JSONArray JA = new JSONArray(data);
             for (int i = 0; i < JA.length();i++){
                 JSONObject JO  = (JSONObject)JA.get(i);
-                singelParsed = "Version :"+JO.get("version");
+                singelParsed = "version :"+JO.get("version") + "\n"
+                + "Nama "+JO.get("nama") +"\n";
                 dataParsed = dataParsed + singelParsed;
             }
 

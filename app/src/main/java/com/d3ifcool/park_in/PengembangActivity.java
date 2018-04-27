@@ -29,8 +29,6 @@ public class PengembangActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),DevActivity.class);
                 startActivity(i);
                 finish();
-
-
             }
         });
     }
