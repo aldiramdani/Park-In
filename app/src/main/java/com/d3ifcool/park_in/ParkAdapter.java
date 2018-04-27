@@ -54,8 +54,6 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
         //ambilfoto
         ImageView image_beranda =(ImageView)listParkView.findViewById(R.id.image_beranda);
 
-
-
         TextView textView_bagi = (TextView) listParkView.findViewById(R.id.textview_bagi);
         TextView textView_hapus = (TextView) listParkView.findViewById(R.id.textview_hapus);
         TextView textView_edit = (TextView)listParkView.findViewById(R.id.textview_edit);

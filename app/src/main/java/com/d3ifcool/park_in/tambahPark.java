@@ -26,7 +26,7 @@ import io.realm.Realm;
 
 
 public class tambahPark extends AppCompatActivity {
-//    public static SQLiteHelper sqLiteHelper;
+
     ImageButton imageTempat;
     Button button;
 
@@ -47,8 +47,6 @@ public class tambahPark extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_park);
-//        sqLiteHelper = new SQLiteHelper(this, "ParkDB.sqlite", null, 1);
-//        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS PARKIR (ID INTEGER PRIMARY KEY AUTOINCREMENT, namaTempat VARCHAR, keterangan VARCHAR, tanggal VARCHAR, jam VARCHAR, gambar BLOB)");
         imageTempat = (ImageButton)findViewById(R.id.image_tempat);
         button = (Button)findViewById(R.id.button);
         txt_nama_tempat = (TextInputEditText)findViewById(R.id.txt_nama_tempat);

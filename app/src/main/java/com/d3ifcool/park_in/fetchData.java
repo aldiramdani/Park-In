@@ -1,6 +1,7 @@
 package com.d3ifcool.park_in;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.d3ifcool.park_in.PengembangActivity;
 
@@ -21,9 +22,9 @@ import java.net.URL;
  */
 
 public class fetchData extends AsyncTask<Void,Void,Void> {
-    String data;
-    String dataParsed;
-    String singelParsed;
+    String data = "";
+    String dataParsed = "";
+    String singelParsed = "";
     @Override
     protected Void doInBackground(Void... voids) {
         try {
@@ -32,11 +33,13 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-            String line="";
+            String line= bufferedReader.readLine();
             while (line != null){
-                line = bufferedReader.readLine();
                 data = data + line;
+                line = bufferedReader.readLine();
             }
+
+            Log.d("AAA", data);
             JSONArray JA = new JSONArray(data);
             for (int i = 0; i < JA.length();i++){
                 JSONObject JO  = (JSONObject)JA.get(i);
@@ -60,6 +63,6 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        PengembangActivity.txt_ver_baru.setText(this.data);
+        PengembangActivity.txt_ver_baru.setText(this.dataParsed);
     }
 }
