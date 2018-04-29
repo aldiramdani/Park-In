@@ -9,6 +9,7 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         Realm.init(this);
+        //tess
 //        Realm.deleteRealm(Realm.getDefaultConfiguration());
     }
 }
