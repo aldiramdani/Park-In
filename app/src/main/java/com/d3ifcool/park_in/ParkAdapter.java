@@ -22,7 +22,10 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
@@ -33,6 +36,8 @@ import io.realm.RealmBaseAdapter;
  */
 
 public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
+    Date jam = Calendar.getInstance().getTime();
+    String currenthours;
     public ParkAdapter (OrderedRealmCollection<Park> realmResults){
         super(realmResults);
     }
@@ -81,7 +86,8 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
         textView_hapus.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
-
+               SimpleDateFormat hours = new SimpleDateFormat("hh:mm:ss");
+               currenthours = hours.format(jam);
                AlertDialog.Builder builder = new AlertDialog.Builder(ListParkView.getRootView().getContext());
                builder.setMessage("Yakin Selesai?")
                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
@@ -90,6 +96,7 @@ public class ParkAdapter extends RealmBaseAdapter<Park> implements ListAdapter{
                                Realm realm = Realm.getDefaultInstance();
                                realm.beginTransaction();
                                currentPark.setRiwayat(true);
+                               currentPark.setWaktu(currenthours);
                                realm.commitTransaction();
                            }
                        })

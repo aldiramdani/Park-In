@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 
 public class tambahPark extends AppCompatActivity {
@@ -55,7 +56,7 @@ public class tambahPark extends AppCompatActivity {
         formattedDate = dateFormat.format(c);
         Calendar rightnow = Calendar.getInstance();
 
-        SimpleDateFormat hours = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat hours = new SimpleDateFormat("hh:mm:ss a");
         currentHours = hours.format(jam);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,9 +86,9 @@ public class tambahPark extends AppCompatActivity {
                        p.setmTanggal(formattedDate);
                       p.setmJam(currentHours);
                        p.setmImage(ImageViewToByte(imageTempat));
+                       p.setWaktu("");
                        p.setRiwayat(false);
                        realm.commitTransaction();
-
                        Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();
                        txt_nama_tempat.setText("");
                        txt_ket_tempat.setText("");
