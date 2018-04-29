@@ -32,7 +32,7 @@ public class RiwayatFragment extends Fragment {
          View rootView = inflater.inflate(R.layout.fragment_control,container,false);
 
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<Park> parks = realm.where(Park.class).sort("waktu", Sort.DESCENDING)
+        RealmResults<Park> parks = realm.where(Park.class).sort("time", Sort.DESCENDING)
                 .equalTo("isRiwayat", true).findAll();
         RiwayatAdapter parkAdapter = new RiwayatAdapter(parks);
         ListView listView = (ListView)rootView.findViewById(R.id.list_view_park);

@@ -36,7 +36,7 @@ public class ParkFragment extends Fragment {
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_park,container,false);
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<Park> parks = realm.where(Park.class).sort("mJam", Sort.DESCENDING)
+        RealmResults<Park> parks = realm.where(Park.class).sort("time", Sort.DESCENDING)
                 .equalTo("isRiwayat", false).findAll();
         ParkAdapter parkAdapter = new ParkAdapter(parks);
         ListView listView = (ListView)rootView.findViewById(R.id.list_view);

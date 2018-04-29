@@ -86,7 +86,7 @@ public class tambahPark extends AppCompatActivity {
                        p.setmTanggal(formattedDate);
                       p.setmJam(currentHours);
                        p.setmImage(ImageViewToByte(imageTempat));
-                       p.setWaktu("");
+                       p.setTime(Calendar.getInstance().getTime().toString());
                        p.setRiwayat(false);
                        realm.commitTransaction();
                        Toast.makeText(tambahPark.this,"Berhasil Di Tambah",Toast.LENGTH_LONG).show();

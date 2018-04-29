@@ -14,7 +14,16 @@ public class Park extends RealmObject {
     private  String mKeterangan;
     private String mTanggal;
     private  String mJam;
-    private String waktu;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    private  String time;
     private byte[] mImage;
 
     public String getId() {
@@ -23,14 +32,6 @@ public class Park extends RealmObject {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getWaktu() {
-        return waktu;
-    }
-
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
     }
 
     private boolean isRiwayat;
